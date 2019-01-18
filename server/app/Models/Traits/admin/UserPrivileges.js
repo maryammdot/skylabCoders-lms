@@ -9,10 +9,10 @@ class UserPrivileges {
 
       const user = await Model.find(userId)
 
-      (user.role) ? user.role = 0 : user.role = 1
-    
-      await user.save()
+      if  (user.role) user.role = 0; else user.role = 1
 
+      await user.save()
+      
       return {user, message: 'User role successfully modified'}
 
     }

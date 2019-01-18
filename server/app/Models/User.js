@@ -43,13 +43,14 @@ class User extends Model {
     return ['password', 'created_at', 'updated_at']
   }
 
-  static get computed() {
-    return ['role']
-  }
+  // static get computed() {
+  //   return ['role']
+  // }
 
-  getRole({role}) {
-    return role ? 'Admin' : 'Student'
-  }
+  // getRole({role}) {
+  //   if(role === 1) return 'Admin'
+  //   return 'Student'
+  // }
 }
 
 module.exports = User

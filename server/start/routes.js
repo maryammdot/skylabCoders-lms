@@ -27,6 +27,6 @@ Route.group(()=> {
 
 Route.group(()=> {
 
-  Route.post('/privileges', 'admin/UserPrivilegesController.togglePrivileges')
+  Route.patch('/privileges', 'admin/UserPrivilegesController.togglePrivileges')
   
 }).prefix('api').middleware(['auth', 'admin'])
