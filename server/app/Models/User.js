@@ -12,7 +12,7 @@ class User extends Model {
     super.boot()
 
     this.addTrait('user/Auth')
-    this.addTrait('Admin/UserPrivileges')
+    this.addTrait('Admin/ManageUsers')
 
     /**
      * A hook to hash the user password before saving

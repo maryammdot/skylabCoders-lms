@@ -27,6 +27,7 @@ Route.group(()=> {
 
 Route.group(()=> {
 
-  Route.patch('/privileges', 'admin/UserPrivilegesController.togglePrivileges')
+  Route.patch('/privileges', 'admin/ManageUsersController.togglePrivileges')
+  Route.delete('/users/:user', 'admin/ManageUsersController.deleteUser').bind('User')
   
 }).prefix('api').middleware(['auth', 'admin'])
