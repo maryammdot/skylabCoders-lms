@@ -3,11 +3,7 @@
 class ManageUsers {
   register (Model) {
   
-    Model.togglePrivileges = async ({request, response}) => {
-
-      const { userId } = request.all()
-
-      const user = await Model.find(userId) 
+    Model.togglePrivileges = async ({user, response}) => {
 
       if (user.role) user.role = 0; else user.role = 1
 
