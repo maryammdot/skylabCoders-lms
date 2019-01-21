@@ -12,7 +12,7 @@ class User extends Model {
     super.boot()
 
     this.addTrait('user/Auth')
-    this.addTrait('Admin/ManageUsers')
+    this.addTrait('admin/ManageUsers')
 
     /**
      * A hook to hash the user password before saving
@@ -40,17 +40,16 @@ class User extends Model {
   }
 
   static get hidden() {
-    return ['password', 'created_at', 'updated_at']
+    return ['password', 'role', 'created_at', 'updated_at']
   }
 
-  // static get computed() {
-  //   return ['role']
-  // }
+  static get computed() {
+    return ['priviliges']
+  }
 
-  // getRole({role}) {
-  //   if(role === 1) return 'Admin'
-  //   return 'Student'
-  // }
+  getPriviliges({role}) {
+    return role ? 'Admin' : 'Student'
+  }
 }
 
 module.exports = User

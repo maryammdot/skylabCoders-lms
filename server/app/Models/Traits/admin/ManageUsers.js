@@ -1,28 +1,28 @@
 'use strict'
 
 class ManageUsers {
-  register (Model) {
-  
-    Model.togglePrivileges = async ({request}) => {
+ register (Model) {
 
-      const { userId } = request.all()
+   Model.togglePrivileges = async ({user, response}) => {
 
-      const user = await Model.find(userId)
+     if (user.role) user.role = 0; else user.role = 1
 
-      if  (user.role) user.role = 0; else user.role = 1
+     await user.save()
 
-      await user.save()
-      
-      return {user, message: 'User role successfully modified'}
-    }
+     return response.status(200).json({user, message: 'User role successfully modified'})
 
-    Model.deleteUser = async ({response, user}) => {
-      console.log('hola')
-      if(!user) return response.status(400).json({message:'User not found'})
-      await user.delete()
-      
-      return {message: 'User successfully deleted'}
-    }
-  }
+   }
+
+   Model.deleteUser = async ({user, response}) => {
+
+     if (!user) return response.status(404).send({error: 'user not found'})
+
+     await user.delete()
+
+     return response.status(200).json({user, message: 'User successfully deleted'})
+
+   }
+
+ }
 }
 module.exports = ManageUsers
