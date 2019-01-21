@@ -19,13 +19,15 @@ class UserSeeder {
     await Factory.model('App/Models/User').create({
       email: 'arcoders@gmail.com',
       username: 'Ismael Haytam',
-      role: 1
+      role: 1,
+      group: 'staff'
     })
 
     await Factory.model('App/Models/User').create({
       email: 'maryammdot@gmail.com',
       username: 'Maryam Malek',
-      role: 1
+      role: 1,
+      group: 'staff'
     })
 
     await Factory.model('App/Models/User').createMany(20)

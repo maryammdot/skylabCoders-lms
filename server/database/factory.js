@@ -19,6 +19,7 @@ Factory.blueprint('App/Models/User', (faker, i, data) => {
     username: data.username ? data.username : faker.username(),
     email: data.email ? data.email : faker.email(),
     password: 'secret',
-    role: data.role ? data.role : 0
+    role: data.role ? data.role : 0,
+    group: data.group ? data.group : new Date().toISOString().slice(0, 10)
   }
 })

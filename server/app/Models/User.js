@@ -13,6 +13,7 @@ class User extends Model {
 
     this.addTrait('user/Auth')
     this.addTrait('admin/ManageUsers')
+    this.addTrait('student/StudentInfo')
 
     /**
      * A hook to hash the user password before saving
@@ -49,6 +50,10 @@ class User extends Model {
 
   getPriviliges({role}) {
     return role ? 'Admin' : 'Student'
+  }
+
+  exercises() {
+    return this.hasMany('App/Models/Exercise')
   }
 }
 
