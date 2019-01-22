@@ -20,6 +20,13 @@ Factory.blueprint('App/Models/User', (faker, i, data) => {
     email: data.email ? data.email : faker.email(),
     password: 'secret',
     role: data.role ? data.role : 0,
-    group: data.group ? data.group : new Date().toISOString().slice(0, 10)
+    promotion_id: data.promotion_id ? data.promotion_id : null,
+  }
+})
+
+Factory.blueprint('App/Models/Promotion', (faker, i, data) => {
+  return {
+    name: data.name ? data.name : faker.name(),
+    year: data.year ? data.year : new Date().toISOString().slice(0, 10)
   }
 })

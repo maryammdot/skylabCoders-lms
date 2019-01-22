@@ -5,6 +5,7 @@ class Register {
     return {
       email: 'required|email|unique:users,email',
       username: 'required|max:20|unique:users,username',
+      promotion_id: 'required',
       password: 'required|min:6|confirmed'
     }
   }

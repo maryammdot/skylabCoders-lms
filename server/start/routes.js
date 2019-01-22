@@ -14,11 +14,10 @@
 */
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
+
 const Route = use('Route')
 
 Route.group(()=> {
-
-  Route.post('/auth/register', 'AuthController.register').validator('Register')
   
   Route.post('/auth/login', 'AuthController.login').validator('Login')
 
@@ -27,23 +26,34 @@ Route.group(()=> {
 
 Route.group(()=> {
 
+  Route.post('/register', 'ManageUsersController.addStudent').validator('Register')
+
   Route.patch('/privileges/:user', 'ManageUsersController.togglePrivileges').bind('User')
   
+  Route.delete('/:user', 'ManageUsersController.deleteUser').bind('User')
+
   Route.delete('/:user', 'ManageUsersController.deleteUser').bind('User')
   
 }).prefix('api/user').middleware(['auth', 'admin']).namespace('admin')
 
 Route.group(()=> {
+
+  Route.get('/users/:promotion', 'PromotionsController.getUsers').bind('Promotion')
   
-  Route.post('/exercises', 'ExerciseCRUDController.add')
+}).prefix('api/promotion').middleware(['auth', 'admin']).namespace('admin')
 
-  Route.get('/exercises/:exercise', 'ExerciseCRUDController.get').bind('Exercise').middleware(['exerciseOwner'])
-
-  Route.patch('/exercises/:exercise', 'ExerciseCRUDController.update').bind('Exercise').middleware(['exerciseOwner'])
-
-  Route.delete('/exercises/:exercise', 'ExerciseCRUDController.remove').bind('Exercise').middleware(['exerciseOwner'])
+Route.group(()=> {
   
-}).prefix('api').middleware(['auth']).namespace('student')
+  Route.post('/', 'ExerciseCRUDController.add')
+
+  Route.get('/:exercise', 'ExerciseCRUDController.get').bind('Exercise').middleware(['exerciseOwner'])
+
+  Route.patch('/:exercise', 'ExerciseCRUDController.update').bind('Exercise').middleware(['exerciseOwner'])
+
+  Route.delete('/:exercise', 'ExerciseCRUDController.remove').bind('Exercise').middleware(['exerciseOwner'])
+  
+}).prefix('api/exercises').middleware(['auth']).namespace('student')
+
 
 Route.group(()=> {
 

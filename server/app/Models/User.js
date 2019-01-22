@@ -55,6 +55,10 @@ class User extends Model {
   exercises() {
     return this.hasMany('App/Models/Exercise')
   }
+
+  promotion() {
+    return this.belongsTo('App/Models/Promotion')
+  }
 }
 
 module.exports = User

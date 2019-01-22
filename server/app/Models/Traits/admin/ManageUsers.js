@@ -22,6 +22,16 @@ class ManageUsers {
       return response.status(200).json({user, message: 'User successfully deleted'})
 
     }
+
+    Model.addStudent = async ({request, response}) => {
+
+      const {email, password, username, promotion_id} = request.all()
+      
+      await Model.create({email, password, username, promotion_id})
+      
+      return response.status(200).json({message: 'User successfully created'})
+
+    }
   
   }
 }

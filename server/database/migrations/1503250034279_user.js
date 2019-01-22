@@ -10,8 +10,8 @@ class UserSchema extends Schema {
       table.string('username', 80).notNullable().unique()
       table.string('email', 254).notNullable().unique()
       table.string('password', 60).notNullable()
-      table.string('group').notNullable()
       table.integer('role').defaultTo(0)
+      table.integer('promotion_id').unsigned().references('id').inTable('promotions')
       table.timestamps()
     })
   }

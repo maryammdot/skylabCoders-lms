@@ -16,6 +16,12 @@ class ManageUsersController {
 
     }
 
+    async addStudent() {
+
+        await User.addStudent(...arguments)
+
+    }
+
 }
 
 module.exports = ManageUsersController
