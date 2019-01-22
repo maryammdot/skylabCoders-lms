@@ -18,35 +18,36 @@ const Route = use('Route')
 
 Route.group(()=> {
 
-  Route.post('/auth/register', 'auth/AuthController.register').validator('Register')
+  Route.post('/auth/register', 'AuthController.register').validator('Register')
   
-  Route.post('/auth/login', 'auth/AuthController.login').validator('Login')
+  Route.post('/auth/login', 'AuthController.login').validator('Login')
 
-}).prefix('api')
+}).prefix('api').namespace('auth')
 
 
 Route.group(()=> {
 
-  Route.patch('/privileges/:user', 'admin/ManageUsersController.togglePrivileges').bind('User')
+  Route.patch('/privileges/:user', 'ManageUsersController.togglePrivileges').bind('User')
   
-  Route.delete('/:user', 'admin/ManageUsersController.deleteUser').bind('User')
+  Route.delete('/:user', 'ManageUsersController.deleteUser').bind('User')
   
-}).prefix('api/user').middleware(['auth', 'admin'])
+}).prefix('api/user').middleware(['auth', 'admin']).namespace('admin')
+
+Route.group(()=> {
+  
+  Route.post('/exercises', 'ExerciseCRUDController.add')
+
+  Route.get('/exercises/:exercise', 'ExerciseCRUDController.get').bind('Exercise').middleware(['exerciseOwner'])
+
+  Route.patch('/exercises/:exercise', 'ExerciseCRUDController.update').bind('Exercise').middleware(['exerciseOwner'])
+
+  Route.delete('/exercises/:exercise', 'ExerciseCRUDController.remove').bind('Exercise').middleware(['exerciseOwner'])
+  
+}).prefix('api').middleware(['auth']).namespace('student')
 
 Route.group(()=> {
 
-  Route.post('/exercises', 'student/ExerciseCRUDController.add')
-
-  Route.get('/exercises/:exercise', 'student/ExerciseCRUDController.get').bind('Exercise')
-
-  Route.patch('/exercises/:exercise', 'student/ExerciseCRUDController.update').bind('Exercise')
-
-  Route.delete('/exercises/:exercise', 'student/ExerciseCRUDController.remove').bind('Exercise')
+  Route.get('/exercises', 'StudentInfoController.getExercises')
   
-}).prefix('api').middleware(['auth'])
+}).prefix('api/students').middleware(['auth']).namespace('student')
 
-Route.group(()=> {
-
-  Route.get('/exercises', 'student/StudentInfoController.getExercises')
-  
-}).prefix('api/students').middleware(['auth'])

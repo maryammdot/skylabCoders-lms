@@ -17,14 +17,10 @@ class ExerciseCrud {
 
     Model.get = async ({exercise, response}) => {
 
-      if (!exercise) return response.status(404).send({error: 'Exercise not found'})
-
       return response.status(200).json({exercise})
     }
 
     Model.update = async ({exercise, request, response}) => {
-
-      if (!exercise) return response.status(404).send({error: 'Exercise not found'})
 
       const params = request.only(['title', 'theme', 'code', 'mark', 'status'])
 
@@ -38,8 +34,6 @@ class ExerciseCrud {
     }
 
     Model.remove = async ({exercise, response}) => {
-
-      if (!exercise) return response.status(404).send({error: 'Exercise not found'})
 
       await exercise.delete()
 

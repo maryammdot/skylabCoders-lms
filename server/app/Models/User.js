@@ -41,7 +41,7 @@ class User extends Model {
   }
 
   static get hidden() {
-    return ['password', 'role', 'created_at', 'updated_at']
+    return ['password', 'created_at', 'updated_at']
   }
 
   static get computed() {
