@@ -19,20 +19,16 @@
 
 // Authentication ----------------------------------------
 
-require('./routing/auth')
+require('./routing/auth/auth')
 
 // Administration ----------------------------------------
 
-require('./routing/admin')
+require('./routing/admin/students')
+
+require('./routing/admin/promotions')
 
 // Students ----------------------------------------------
 
-require('./routing/promotions')
+require('./routing/student/exercises')
 
-// Exercises ----------------------------------------------
 
-require('./routing/exercises')
-
-// Students -----------------------------------------------
-
-require('./routing/students')
