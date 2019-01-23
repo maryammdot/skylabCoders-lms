@@ -10,6 +10,24 @@ class PromotionController {
 
     }
 
+    async promotions() {
+        
+        await Promotion.promotions(...arguments)
+
+    }
+
+    async promotion() {
+
+        await Promotion.promotion(...arguments)
+
+    }
+
+    async editPromotion() {
+
+        await Promotion.editPromotion(...arguments)
+
+    }
+
 }
 
 module.exports = PromotionController

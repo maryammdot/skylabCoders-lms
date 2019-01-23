@@ -39,6 +39,12 @@ Route.group(()=> {
 Route.group(()=> {
 
   Route.get('/users/:promotion', 'PromotionsController.getUsers').bind('Promotion')
+
+  Route.get('/all', 'PromotionsController.promotions')
+
+  Route.get('/:promotion', 'PromotionsController.promotion').bind('Promotion')
+
+  Route.patch('/:promotion', 'PromotionsController.editPromotion').bind('Promotion')
   
 }).prefix('api/promotion').middleware(['auth', 'admin']).namespace('admin')
 
