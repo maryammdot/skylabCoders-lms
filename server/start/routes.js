@@ -1,5 +1,6 @@
 'use strict'
 
+
 /*
 |--------------------------------------------------------------------------
 | Routes
@@ -15,55 +16,23 @@
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 
-const Route = use('Route')
 
-Route.group(()=> {
-  
-  Route.post('/auth/login', 'AuthController.login').validator('Login')
+// Authentication ----------------------------------------
 
-}).prefix('api').namespace('auth')
+require('./routing/auth')
 
+// Administration ----------------------------------------
 
-Route.group(()=> {
+require('./routing/admin')
 
-  Route.post('/register', 'ManageUsersController.addStudent').validator('Register')
+// Students ----------------------------------------------
 
-  Route.patch('/privileges/:user', 'ManageUsersController.togglePrivileges').bind('User')
-  
-  Route.delete('/:user', 'ManageUsersController.deleteUser').bind('User')
+require('./routing/promotions')
 
-  Route.delete('/:user', 'ManageUsersController.deleteUser').bind('User')
-  
-}).prefix('api/user').middleware(['auth', 'admin']).namespace('admin')
+// Exercises ----------------------------------------------
 
-Route.group(()=> {
+require('./routing/exercises')
 
-  Route.get('/users/:promotion', 'PromotionsController.getUsers').bind('Promotion')
+// Students -----------------------------------------------
 
-  Route.get('/all', 'PromotionsController.promotions')
-
-  Route.get('/:promotion', 'PromotionsController.promotion').bind('Promotion')
-
-  Route.patch('/:promotion', 'PromotionsController.editPromotion').bind('Promotion')
-  
-}).prefix('api/promotion').middleware(['auth', 'admin']).namespace('admin')
-
-Route.group(()=> {
-  
-  Route.post('/', 'ExerciseCRUDController.add')
-
-  Route.get('/:exercise', 'ExerciseCRUDController.get').bind('Exercise').middleware(['exerciseOwner'])
-
-  Route.patch('/:exercise', 'ExerciseCRUDController.update').bind('Exercise').middleware(['exerciseOwner'])
-
-  Route.delete('/:exercise', 'ExerciseCRUDController.remove').bind('Exercise').middleware(['exerciseOwner'])
-  
-}).prefix('api/exercises').middleware(['auth']).namespace('student')
-
-
-Route.group(()=> {
-
-  Route.get('/exercises', 'StudentInfoController.getExercises')
-  
-}).prefix('api/students').middleware(['auth']).namespace('student')
-
+require('./routing/students')

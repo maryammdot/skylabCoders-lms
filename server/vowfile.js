@@ -58,5 +58,7 @@ module.exports = (cli, runner) => {
     |
     */
     await ace.call('migration:reset', {}, { silent: true })
+    await ace.call('migration:run', {}, { silent: true })
+    await ace.call('seed', {}, { silent: true })
   })
 }
