@@ -39,9 +39,29 @@ class Promotion {
 
       promotion.merge(params)
 
-      await promotionsave()
+      await promotion.save()
 
       return response.status(200).json({promotion, message: 'Promotion successfully modified'})
+
+    }
+
+    Model.addPromotion = async ({request, response}) => {
+
+      const {name, year} = request.all()
+
+      const promotion = await Model.create({name, year})
+
+      return response.status(200).json({promotion, message: `Promotion ${name} successfully created`})
+      
+    }
+
+    Model.deletePromotion = async ({promotion, response}) => {
+
+      if (!promotion) return response.status(404).send({error: 'promotion not found'})
+
+      await promotion.delete()
+
+      return response.status(200).json({message: 'Promotion successfully deleted'})
 
     }
 

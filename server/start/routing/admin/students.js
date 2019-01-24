@@ -12,4 +12,4 @@ Route.group(()=> {
     
     Route.delete('/:user', 'ManageUsersController.deleteUser').bind('User')
       
-}).prefix('api/admin/users').middleware(['auth', 'admin']).namespace('admin')
+}).prefix('api/admin/users').middleware(['auth', 'admin']).namespace('admin') 

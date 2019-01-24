@@ -6,7 +6,7 @@ Route.group(()=> {
 
     Route.get('/all', 'PromotionsController.promotions')
 
-    Route.post('/add', 'PromotionsController.addPromotions')
+    Route.post('/add', 'PromotionsController.addPromotion')
 
     Route.get('/users/:promotion', 'PromotionsController.getUsers').bind('Promotion')
     

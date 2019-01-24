@@ -12,6 +12,11 @@ class Promotion extends Model {
     
       }
 
+    static get hidden() {
+        return ['created_at', 'updated_at']
+    }
+    
+
     users() {
         return this.hasMany('App/Models/User')
     }

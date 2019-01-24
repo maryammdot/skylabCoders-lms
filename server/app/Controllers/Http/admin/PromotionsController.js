@@ -28,6 +28,18 @@ class PromotionController {
 
     }
 
+    async addPromotion() {
+
+        await Promotion.addPromotion(...arguments)
+        
+    }
+
+    async deletePromotion() {
+        
+        await Promotion.deletePromotion(...arguments)
+
+    }
+
 }
 
 module.exports = PromotionController

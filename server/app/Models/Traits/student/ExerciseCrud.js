@@ -1,9 +1,7 @@
 'use strict'
 
 class ExerciseCrud {
-  register (Model, customOptions = {}) {
-    const defaultOptions = {}
-    const options = Object.assign(defaultOptions, customOptions)
+  register (Model) {
   
     Model.add = async ({request, auth, response}) => {
       const user = await auth.getUser()
