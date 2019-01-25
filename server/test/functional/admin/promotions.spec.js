@@ -89,21 +89,24 @@ test('Admin can get users by promotion', async ({client}) => {
         id: student_1.id,username: student_1.username,
         email: student_1.email,
         role: 0,
-        priviliges: 'Student'
+        priviliges: 'Student',
+        promotion_id: promotion.id
       },
       {
         id: student_2.id,
         username: student_2.username,
         email: student_2.email,
         role: 0,
-        priviliges: 'Student'
+        priviliges: 'Student',
+        promotion_id: promotion.id
       },
       {
         id: student_3.id,
         username: student_3.username,
         email: student_3.email,
         role: 0,
-        priviliges: 'Student'
+        priviliges: 'Student',
+        promotion_id: promotion.id
       },
     ]
   })

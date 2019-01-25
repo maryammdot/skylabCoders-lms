@@ -10,6 +10,6 @@ Route.group(()=> {
     
     Route.get('/retrieve/:user', 'ManageUsersController.editUser').bind('User')
     
-    Route.delete('/:user', 'ManageUsersController.deleteUser').bind('User')
+    Route.delete('/delete/:user', 'ManageUsersController.deleteUser').bind('User')
       
 }).prefix('api/admin/users').middleware(['auth', 'admin']).namespace('admin') 
