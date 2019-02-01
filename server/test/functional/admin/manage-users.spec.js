@@ -1,7 +1,7 @@
 
 'use strict'
 
-const { test, trait } = use('Test/Suite')('Group')
+const { test, trait } = use('Test/Suite')('Manage Users')
 
 const Group = use('App/Models/Promotion')
 

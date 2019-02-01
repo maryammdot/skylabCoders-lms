@@ -4,7 +4,7 @@ const Route = use('Route')
 
 Route.group(()=> {
   
-    Route.post('/add', 'ExerciseCRUDController.add')
+    Route.post('/add', 'ExercisesController.add')
 
     Route.get('/all', 'StudentsController.getExercises')
 

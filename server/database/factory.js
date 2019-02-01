@@ -12,6 +12,7 @@
 */
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
+
 const Factory = use('Factory')
 
 Factory.blueprint('App/Models/User', (faker, i, data) => {
@@ -27,6 +28,17 @@ Factory.blueprint('App/Models/User', (faker, i, data) => {
 Factory.blueprint('App/Models/Promotion', (faker, i, data) => {
   return {
     name: data.name ? data.name : faker.name(),
-    year: data.year ? data.year : new Date().toISOString().slice(0, 10)
+    year: data.year ? data.year : faker.date({string: true})
   }
 })
+
+Factory.blueprint('App/Models/Exercise', async (faker, i, data) => {
+  return {
+    title: data.title ? data.title : faker.sentence({ words: 4 }),
+    theme: data.theme ? data.theme : faker.integer({ min: 0, max: 8 }),
+    code: `<p>${faker.sentence({ words: 10 })}</p>`,
+    status: data.status ? data.status : 0,
+    user_id: data.user_id ? data.user_id : null
+  }
+})
+

@@ -1,28 +1,31 @@
 'use strict'
 
-class ExerciseCrud {
+class Exercise {
   register (Model) {
   
     Model.add = async ({request, auth, response}) => {
+      
       const user = await auth.getUser()
 
-      const {title, theme, code } = request.all()
+      const {title, theme, code} = request.all()
 
       const exercise = await Model.create({title, theme, code, user_id: user.id })
 
-      return response.status(200).json({exercise, message: 'Exercise successfully added'})
+      return response.status(200).json({exercise, message: 'Exercise successfully sent'})
     }
 
     Model.get = async ({exercise, response}) => {
+
+      if (!exercise) return response.status(404).send({error: 'exercise not found'})
 
       return response.status(200).json({exercise})
     }
 
     Model.update = async ({exercise, request, response}) => {
 
-      const params = request.only(['title', 'theme', 'code', 'mark', 'status'])
+      const params = request.only(['title', 'theme', 'code'])
 
-      if(!Object.keys(params).length) return response.status(404).send({error: 'Exercise has not been modified'})
+      if (!Object.keys(params).length) return response.status(404).send({error: 'Exercise has not been modified'})
 
       exercise.merge(params)
 
@@ -33,6 +36,8 @@ class ExerciseCrud {
 
     Model.remove = async ({exercise, response}) => {
 
+      if (!exercise) return response.status(404).send({error: 'exercise not found'})
+
       await exercise.delete()
 
       return response.status(200).json({message: 'Exercise successfully deleted'})
@@ -40,4 +45,4 @@ class ExerciseCrud {
   }
 }
 
-module.exports = ExerciseCrud
+module.exports = Exercise

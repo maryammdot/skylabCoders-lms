@@ -3,13 +3,12 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model')
 
-
 class Exercise extends Model {
 
     static boot () {
         super.boot()
     
-        this.addTrait('student/ExerciseCRUD')
+        this.addTrait('student/Exercise')
     }
 
     static get hidden() {

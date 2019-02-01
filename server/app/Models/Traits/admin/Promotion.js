@@ -35,7 +35,7 @@ class Promotion {
 
       const params = request.only(['name', 'year'])
 
-      if(!Object.keys(params).length) return response.status(404).send({error: 'Promotion has not been modified'})
+      if (!Object.keys(params).length) return response.status(404).send({error: 'Promotion has not been modified'})
 
       promotion.merge(params)
 
