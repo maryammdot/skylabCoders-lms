@@ -1,0 +1,6 @@
+{
+    "editor.lineHeight": 20,
+    "editor.mouseWheelZoom": true,
+    "files.autoSave": "onFocusChange",
+    "prettier.semi": false
+}

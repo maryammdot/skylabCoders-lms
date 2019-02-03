@@ -4,16 +4,20 @@ class Login {
   get rules () {
     return {
       email: 'required|email',
-      password: 'required|min:6',
+      password: 'required|string|min:6',
     }
   }
 
   get messages () {
     return {
+      // ......................................................................
       'email.required': 'You must provide a email address',
       'email.email': 'You must provide a valid email address',
+      // ......................................................................
       'password.required': 'You must provide a password',
+      'password.string': 'Password must be s string',
       'password.min': 'Password must be of minimum length 6 characters'
+      // ......................................................................
     }
   }
 
