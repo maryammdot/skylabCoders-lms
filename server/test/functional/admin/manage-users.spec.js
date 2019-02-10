@@ -1,6 +1,6 @@
 "use strict"
 
-const { test, trait, beforeEach } = use("Test/Suite")("Manage Users")
+const { test, trait, beforeEach, group } = use("Test/Suite")("Manage Users")
 const Group = use("App/Models/Promotion")
 const Factory = use("Factory")
 
@@ -30,6 +30,7 @@ beforeEach(async () => {
 /*
   Success Cases -----------------------------------------------------------------------
 */
+
 
 test("Admin can toggle user privileges", async ({ client }) => {
   const resToggleToAdmin = await client

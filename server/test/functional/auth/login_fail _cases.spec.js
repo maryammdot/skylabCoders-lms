@@ -1,55 +1,11 @@
 "use strict"
 
-const { test, trait } = use("Test/Suite")("Auth - Login")
+const { test, trait } = use("Test/Suite")("Auth - Login - Fail Cases")
 
 const Factory = use("Factory")
 
 trait("Test/ApiClient")
 
-/*
-  Success Cases -----------------------------------------------------------------------
-*/
-
-test("User can login with valid credential", async ({ assert, client }) => {
-  const { email, username } = await Factory.model("App/Models/User").create()
-
-  const res = await client
-    .post("api/auth/login")
-    .send({ email, password: "secret" })
-    .end()
-
-  res.assertStatus(200)
-
-  const { jwt } = JSON.parse(res.text)
-
-  assert.equal(jwt.type, "bearer")
-
-  assert.typeOf(jwt.token, "string")
-
-  res.assertHeader("content-type", "application/json; charset=utf-8")
-
-  res.assertJSONSubset({
-    user: { email, username },
-    message: "Logged in successfully"
-  })
-})
-
-/*
-  Possible Fail Cases  -----------------------------------------------------------------------
-*/
-
-test("Should fail on incorrect password", async ({ client }) => {
-  const { email } = await Factory.model("App/Models/User").create()
-
-  const res = await client
-    .post("api/auth/login")
-    .send({ email, password: "wrong password" })
-    .end()
-
-  res.assertStatus(401)
-
-  res.assertError([{ field: "password", message: "Invalid user password" }])
-})
 
 test("Should fail on unregistered email", async ({ client }) => {
   const res = await client
@@ -132,6 +88,7 @@ test("Password should be a string", async ({ client }) => {
   ])
 })
 
+
 test("Password should fail on invalid min", async ({ client }) => {
   const res = await client
     .post("api/auth/login")
@@ -147,4 +104,17 @@ test("Password should fail on invalid min", async ({ client }) => {
       validation: "min"
     }
   ])
+})
+
+test("Should fail on incorrect password", async ({ client }) => {
+  const { email } = await Factory.model("App/Models/User").create()
+
+  const res = await client
+    .post("api/auth/login")
+    .send({ email, password: "wrong password" })
+    .end()
+
+  res.assertStatus(401)
+
+  res.assertError([{ field: "password", message: "Invalid user password" }])
 })
