@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import auth from 'services/auth'
+import isAuthenticated from "components/middlewares/isAuthenticated"
 
 class Signin extends Component {
 
@@ -32,4 +33,4 @@ class Signin extends Component {
 
 }
 
-export default Signin
+export default isAuthenticated(Signin)

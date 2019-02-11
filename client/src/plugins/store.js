@@ -1,19 +1,35 @@
-export default (() => {
+class Store {
 
-  const deleteStorage = () => localStorage.removeItem("LMS")
+  constructor(namespace) {
+    this.namespace = namespace
+    this.TOKEN = this.getToken() || null
+    this.USER = this.getUser() || null
+  }
 
-  const getStorage = () => JSON.parse(localStorage.getItem("LMS"))
+  setStorage(obj) {
+    localStorage.setItem(this.namespace, JSON.stringify(obj))
+    this.TOKEN = this.getToken()
+    this.USER = this.getUser()
+  }
 
-  const setStorage = obj => localStorage.setItem("LMS", JSON.stringify(obj))
+  getStorage() {
+    return JSON.parse(localStorage.getItem(this.namespace))
+  }
 
-  const getToken = () => {
-    let { jwt } = getStorage()
+  deleteStorage() {
+    localStorage.removeItem(this.namespace)
+  }
+
+  getToken() {
+    let { jwt } = this.getStorage() || {}
     return jwt && jwt.token
   }
 
-  const TOKEN = getToken()
+  getUser() {
+    let { user } = this.getStorage() || {}
+    return user
+  }
+  
+}
 
-  const USER = getStorage() && getStorage().user
-
-  return { TOKEN, USER, deleteStorage, setStorage }
-})()
+export default new Store('LMS')

@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-import requireAuth from "components/Auth/requireAuth"
+import requireAuth from "components/middlewares/requireAuth"
 
 class Home extends Component {
   render() {

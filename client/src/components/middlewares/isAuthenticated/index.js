@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import store from "plugins/store"
 
 export default ChildComponent => {
@@ -14,15 +14,15 @@ export default ChildComponent => {
         }
 
         shouldNavigateAway() {
-            if (!store.TOKEN) this.props.history.push('/')
+            if (store.TOKEN) this.props.history.push('/home')
         }
 
         renderChilds() {
-            return (store.TOKEN) ? <ChildComponent {...this.props} /> : null
+            return (!store.TOKEN) ? <ChildComponent {...this.props} /> : null
         }
 
         render() {
-            return <div> {this.renderChilds()} </div>
+            return <Fragment>{this.renderChilds()}</Fragment>
         }
 
     }
