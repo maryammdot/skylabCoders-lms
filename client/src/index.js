@@ -6,6 +6,9 @@ import App from "components/App"
 import Signin from "components/Auth/Signin"
 import Home from "components/Home"
 
+import 'assets/sass/style.sass'
+
+
 ReactDOM.render(
   <BrowserRouter>
     <App>

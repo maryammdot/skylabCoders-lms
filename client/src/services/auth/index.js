@@ -14,9 +14,11 @@ export default (() => {
       const {data} = await axios().post("auth/login", postData)
       store.setStorage(data)
     } catch (error) {
+      if (error.response) {
+        const { response: { data } } = error
+        throw Error(data.pop().message)
+      }
       if (error.message) throw Error(error.message)
-      const { response: { data } } = error
-      throw Error(data.pop().message)
     }
   }
 
