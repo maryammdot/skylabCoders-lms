@@ -22,7 +22,7 @@ class ManagePromotions extends Component {
 
             <Route path="/home/admin/promotions/all" component={AllPromotions}/>
             <Route path="/home/admin/promotions/add" component={AddPromotion}/>
-            <Route path="/home/admin/promotions/edit" component={EditPromotion}/>
+            <Route path="/home/admin/promotions/edit/:promotionId" component={EditPromotion}/>
 
         </section>
     }

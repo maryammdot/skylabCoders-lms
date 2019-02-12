@@ -1,11 +1,15 @@
-export default (() => {
-  const login = ({ email, password }) => {
-    if (!email || !email.includes("@") || !email.includes("."))
-      throw TypeError("Invalid email")
+function login({ email, password }) {
+  if (!email || !email.includes("@") || !email.includes("."))
+    return "Invalid email"
 
-    if (!password || password.split(" ").length > 1 || typeof password !== "string")
-      throw TypeError("Invalid password")
-  }
+  if (
+    !password ||
+    password.split(" ").length > 1 ||
+    typeof password !== "string"
+  )
+    return "Invalid password"
+    
+  return false
+}
 
-  return { login }
-})()
+export {login}

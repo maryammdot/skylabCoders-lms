@@ -8,7 +8,8 @@ class PromotionSchema extends Schema {
     this.create('promotions', (table) => {
       table.increments()
       table.string('name').notNullable()
-      table.integer('year').notNullable()
+      table.string('initialDate').notNullable()
+      table.string('endDate').notNullable()
       table.timestamps()
     })
   }

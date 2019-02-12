@@ -18,17 +18,20 @@ class UserSeeder {
 
     let firstPromotion = await Factory.model('App/Models/Promotion').create({
       name: 'Primera',
-      year: '06/01/2018 - 28/03/2018'
+      initialdate: '06/01/2018',
+      endDate: '28/03/2018'
     })
     
     await Factory.model('App/Models/Promotion').create({
       name: 'Segunda',
-      year: '06/04/2018 - 28/07/2018'
+      initialdate: '06/04/2018',
+      endDate: '28/07/2018'
     })
 
     await Factory.model('App/Models/Promotion').create({
       name: 'Tercera',
-      year: '03/09/2018 - 3/01/2019'
+      initialdate: '03/09/2018',
+      endDate: '3/01/2019'
     })
 
     await Factory.model('App/Models/User').create({

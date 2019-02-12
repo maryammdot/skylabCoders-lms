@@ -25,7 +25,7 @@ class Signin extends Component {
             <form onSubmit={handleSubmit}>
                 <input type="text" name="email" placeholder="Email" onChange={handleChange}/>
                 <input type="password" name="password" placeholder="Password" onChange={handleChange}/>
-                <button type="submit">Entrar</button>
+                <button type="submit">Login</button>
             </form>
             {error && <p>{error}</p>}
         </div>

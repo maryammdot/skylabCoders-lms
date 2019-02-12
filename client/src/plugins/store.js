@@ -2,8 +2,8 @@ class Store {
 
   constructor(namespace) {
     this.namespace = namespace
-    this.TOKEN = this.getToken() || null
-    this.USER = this.getUser() || null
+    this.TOKEN = this.getToken()
+    this.USER = this.getUser()
   }
 
   setStorage(obj) {
@@ -18,6 +18,8 @@ class Store {
 
   deleteStorage() {
     localStorage.removeItem(this.namespace)
+    this.TOKEN = null
+    this.USER = null
   }
 
   getToken() {
@@ -28,6 +30,10 @@ class Store {
   getUser() {
     let { user } = this.getStorage() || {}
     return user
+  }
+
+  refreshToken() {
+    this.TOKEN = this.getToken()   
   }
   
 }
