@@ -28,8 +28,7 @@ Factory.blueprint('App/Models/User', (faker, i, data) => {
 Factory.blueprint('App/Models/Promotion', (faker, i, data) => {
   return {
     name: data.name ? data.name : faker.name(),
-    initialDate: data.initialDate ? data.initialDate : faker.date({string: true}),
-    endDate: data.endDate ? data.endDate : faker.date({string: true})
+    season: data.season ? data.season : faker.date({string: true})
   }
 })
 

@@ -15,7 +15,6 @@ class ManagePromotions extends Component {
             <ul>
                 <li><Link to="/home/admin/promotions/all">All Promotions</Link></li>
                 <li><Link to="/home/admin/promotions/add">Add Promotion</Link></li>
-                <li><Link to="/home/admin/promotions/edit">Edit Promotion</Link></li>
             </ul>
 
             <hr/>
@@ -23,7 +22,6 @@ class ManagePromotions extends Component {
             <Route path="/home/admin/promotions/all" component={AllPromotions}/>
             <Route path="/home/admin/promotions/add" component={AddPromotion}/>
             <Route path="/home/admin/promotions/edit/:promotionId" component={EditPromotion}/>
-
         </section>
     }
 

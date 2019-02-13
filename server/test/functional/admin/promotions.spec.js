@@ -15,7 +15,7 @@ test("Admin can create a promotion", async ({ client }) => {
 
   const postData = {
     name: "Primera promoción",
-    year: "06/01/2018 - 28/03/2018"
+    season: "06/01/2018 - 28/03/2018"
   }
 
   const res = await client

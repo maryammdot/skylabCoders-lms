@@ -41,8 +41,8 @@ export default {
 
   async edit(postData) {
     try {
-        const {data: {promotion}} = await axios().patch("promotions/edit", postData)
-        return promotion
+        const {data} = await axios().patch(`promotions/edit/${postData.promotionId}`, postData)
+        return data
     } catch (error) {
         throw Error(validate.http(error))
     }

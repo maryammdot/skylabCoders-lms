@@ -7,7 +7,7 @@ export default ({ promotions, deletePromotion }) => {
     promotions.map(promotion => (
         <div key={promotion.id}>
             <h3>{promotion.name}</h3>
-            <p>{promotion.initialDate} | {promotion.endDate}</p>
+            <p>{promotion.season}</p>
             <div>
                 <button onClick={() => deletePromotion(promotion.id)}>Delete</button>
                 <Link to={`/home/admin/promotions/edit/${promotion.id}`}>Edit</Link>

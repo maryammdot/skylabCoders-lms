@@ -5,7 +5,7 @@ class Promotion {
 
     Model.getUsers = async ({promotion, response}) => {
       
-      if (!promotion) return response.status(404).send({error: 'promotion not found'})
+      if (!promotion) return response.status(404).send({error: 'Promotion not found'})
 
       const users = await promotion.users().fetch()
 
@@ -22,7 +22,7 @@ class Promotion {
 
     Model.promotion = async ({promotion, response}) => {
 
-      if (!promotion) return response.status(404).send({error: 'promotion not found'})
+      if (!promotion) return response.status(404).send({error: 'Promotion not found'})
 
       return response.status(200).json({promotion})
 
@@ -31,9 +31,9 @@ class Promotion {
 
     Model.editPromotion = async ({promotion, response, request}) => {
 
-      if (!promotion) return response.status(404).send({error: 'promotion not found'})
+      if (!promotion) return response.status(404).send({error: 'Promotion not found'})
 
-      const params = request.only(['name', 'year'])
+      const params = request.only(['name', 'season'])
 
       if (!Object.keys(params).length) return response.status(404).send({error: 'Promotion has not been modified'})
 
@@ -47,9 +47,9 @@ class Promotion {
 
     Model.addPromotion = async ({request, response}) => {
 
-      const {name, year} = request.all()
+      const {name, season} = request.all()
 
-      const promotion = await Model.create({name, year})
+      const promotion = await Model.create({name, season})
 
       return response.status(200).json({promotion, message: `Promotion ${name} successfully created`})
       
@@ -57,7 +57,7 @@ class Promotion {
 
     Model.deletePromotion = async ({promotion, response}) => {
 
-      if (!promotion) return response.status(404).send({error: 'promotion not found'})
+      if (!promotion) return response.status(404).send({error: 'Promotion not found'})
 
       await promotion.delete()
 

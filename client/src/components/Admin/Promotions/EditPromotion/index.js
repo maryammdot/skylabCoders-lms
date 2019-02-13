@@ -4,11 +4,11 @@ import Promotions from 'services/admin/promotions'
 
 class EditPromotion extends Component {
 
-    state = { name: '', initialDate: '', endDate: '', message: null, error: null }
+    state = { name: '', season: '', message: null, error: null }
+
+    promotionId = this.props.match.params.promotionId
 
     handleChange = ({target: {name, value}}) => this.setState({[name]: value})
-
-    format = date => date.replace(/\//g, '-'); 
 
     componentDidMount() {
         this.getPromotion()
@@ -16,32 +16,34 @@ class EditPromotion extends Component {
 
     getPromotion = async () => {
         try {
-            const {match: {params: {promotionId}}} = this.props
-            const {name, initialDate, endDate} = await Promotions.retrieve(promotionId)
-            this.setState({name, initialDate: this.format(initialDate), endDate: this.format(endDate)})
+            const promotion = await Promotions.retrieve(this.promotionId)
+            this.setState(promotion)
         } catch ({message}) {
             this.setState({error: message})
         }
     }
 
-    handleSubmit = async (event) => {
-        event.preventDefault()
-        const {name, initialDate, endDate} = this.state
+    editPromotion = async postData => {
         try {
-            const message = await Promotions.edit({name, year: `${initialDate}/${endDate}`})
-            this.setState({message})
+            const {promotion: {name, season}, message} = await Promotions.edit(postData)
+            this.setState({name, season, message})
         } catch ({message}) {
             this.setState({error: message})
         }
+    }
+
+    handleSubmit = event => {
+        event.preventDefault()
+        const {state: {name, season}, editPromotion, promotionId} = this
+        editPromotion({name, season, promotionId})
     }
 
     render () {
-        const { state: {name, initialDate, endDate, error, message}, handleChange, handleSubmit } = this
+        const { state: {name, season, error, message}, handleChange, handleSubmit } = this
         return <div>
             <form onSubmit={handleSubmit}>
                 <input type="text" value={name} name="name" placeholder="Promotion name" onChange={handleChange}/>
-                <input type="date" value={initialDate} name="initialDate" placeholder="Initial date" onChange={handleChange}/>
-                <input type="date" value={endDate} name="endDate" placeholder="End date" onChange={handleChange}/>
+                <input type="text" value={season} name="season" placeholder="Season" onChange={handleChange}/>
                 <button type="submit">Edit Promotion</button>
             </form>
             {message && <p>{message}</p>}

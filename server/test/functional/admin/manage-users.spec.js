@@ -87,7 +87,8 @@ test("Admin can register student and assign it to a promotion", async ({
     student: {
       email: postData.email,
       username: postData.username,
-      promotion_id: promotion.id
+      promotion_id: promotion.id,
+      priviliges: 'Student'
     },
     message: "Student successfully created"
   })

@@ -3,31 +3,34 @@ import Promotions from 'services/admin/promotions'
 
 class AddPromotion extends Component {
 
-    state = { name: '', initialDate: '', endDate: '', message: null, error: null }
+    state = { name: '', season: '', message: null, error: null }
 
     handleChange = ({target: {name, value}}) => this.setState({[name]: value})
 
-    handleSubmit = async (event) => {
-        event.preventDefault()
-        const {name, initialDate, endDate} = this.state
+    addPromotion = async postData => {
         try {
-            const message = await Promotions.add({name, year: `${initialDate}/${endDate}`})
+            const message = await Promotions.add(postData)
             this.setState({message})
         } catch ({message}) {
             this.setState({error: message})
         }
     }
 
+    handleSubmit = async event => {
+        event.preventDefault()
+        const {state: {name, season}, addPromotion} = this
+        addPromotion({name, season})
+    }
+
     render () {
         const { state: {error, message}, handleChange, handleSubmit } = this
         return <div>
+            {message && <p>{message}</p>}
             <form onSubmit={handleSubmit}>
                 <input type="text" name="name" placeholder="Promotion name" onChange={handleChange}/>
-                <input type="date" name="initialDate" placeholder="Initial date" onChange={handleChange}/>
-                <input type="date" name="endDate" placeholder="End date" onChange={handleChange}/>
+                <input type="text" name="season" placeholder="Season" onChange={handleChange}/>
                 <button type="submit">Add Promotion</button>
             </form>
-            {message && <p>{message}</p>}
             {error && <p>{error}</p>}
         </div>
     }

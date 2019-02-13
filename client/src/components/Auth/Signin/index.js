@@ -8,15 +8,19 @@ class Signin extends Component {
 
     handleChange = ({target: {name, value}}) => this.setState({[name]: value})
 
-    handleSubmit = async (event) => {
-        event.preventDefault()
-        const {email, password} = this.state
+    login = async postData => {
         try {
-            await auth.login({email, password})
+            await auth.login(postData)
             this.props.history.push('/home')
         } catch ({message}) {
             this.setState({error: message})
         }
+    }
+
+    handleSubmit = async (event) => {
+        event.preventDefault()
+        const {state: {email, password}, login} = this
+        login({email, password})
     }
 
     render () {

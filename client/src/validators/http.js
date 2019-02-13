@@ -13,6 +13,8 @@ function http(error) {
             return data.pop().message
         case 422:
             return data.pop().message
+        case 404:
+            return data.error
         default:
             return 'An error has occurred please try it later'
       }
