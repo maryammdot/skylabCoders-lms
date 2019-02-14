@@ -4,7 +4,7 @@ import PromotionCard from 'components/Admin/Promotions/AllPromotions/PromotionCa
 
 class AllPromotions extends Component {
 
-    state = { promotions: null, message: null, error: null }
+    state = { promotions: [], message: null, error: null }
 
     componentDidMount() {
         this.getPromotions()
@@ -21,7 +21,7 @@ class AllPromotions extends Component {
 
     deletePromotion = async promotionId => {
         try {
-            const message = await Promotions.delete(promotionId)
+            const message = await Promotions.delete({promotionId})
             const promotions = this.state.promotions.filter(propmotion => propmotion.id !== promotionId)
             this.setState({ message, promotions })
         } catch ({message}) {

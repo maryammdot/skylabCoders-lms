@@ -12,10 +12,19 @@ export default {
     }
   },
 
-  async retrieve(promotionId) {
+  async retrieve({promotionId}) {
     try {
         const {data: {promotion}} = await axios().get(`promotions/retrieve/${promotionId}`)
         return promotion
+    } catch (error) {
+        throw Error(validate.http(error))
+    }
+  },
+
+  async getStudents({promotionId}) {
+    try {
+        const {data: {students}} = await axios().get(`promotions/students/${promotionId}`)
+        return students
     } catch (error) {
         throw Error(validate.http(error))
     }
@@ -30,9 +39,9 @@ export default {
     }
   },
 
-  async delete(id) {
+  async delete({promotionId}) {
     try {
-        const {data: {message}} = await axios().delete(`promotions/delete/${id}`)
+        const {data: {message}} = await axios().delete(`promotions/delete/${promotionId}`)
         return message
     } catch (error) {
         throw Error(validate.http(error))

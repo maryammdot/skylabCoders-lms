@@ -15,8 +15,9 @@ class EditPromotion extends Component {
     }
 
     getPromotion = async () => {
+        const {promotionId} = this
         try {
-            const promotion = await Promotions.retrieve(this.promotionId)
+            const promotion = await Promotions.retrieve({promotionId})
             this.setState(promotion)
         } catch ({message}) {
             this.setState({error: message})

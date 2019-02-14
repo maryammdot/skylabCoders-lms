@@ -99,14 +99,14 @@ test("Admin can get users by promotion", async ({ client }) => {
   })
 
   const res = await client
-    .get(`api/promotions/users/${promotion.id}`)
+    .get(`api/promotions/students/${promotion.id}`)
     .loginVia(admin)
     .end()
 
   res.assertStatus(200)
 
   res.assertJSONSubset({
-    users: [
+    students: [
       {
         id: student_1.id,
         username: student_1.username,

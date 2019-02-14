@@ -4,6 +4,7 @@ import { Link, Route } from "react-router-dom"
 import AllPromotions from "components/Admin/Promotions/AllPromotions"
 import AddPromotion from "components/Admin/Promotions/AddPromotion"
 import EditPromotion from "components/Admin/Promotions/EditPromotion"
+import PromotionStudents from "components/Admin/Promotions/PromotionStudents"
 
 class ManagePromotions extends Component {
 
@@ -22,6 +23,7 @@ class ManagePromotions extends Component {
             <Route path="/home/admin/promotions/all" component={AllPromotions}/>
             <Route path="/home/admin/promotions/add" component={AddPromotion}/>
             <Route path="/home/admin/promotions/edit/:promotionId" component={EditPromotion}/>
+            <Route path="/home/admin/promotions/students/:promotionId" component={PromotionStudents}/>
         </section>
     }
 

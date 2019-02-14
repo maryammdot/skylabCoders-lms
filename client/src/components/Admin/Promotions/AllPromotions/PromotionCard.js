@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom"
 
 export default ({ promotions, deletePromotion }) => {
-    return promotions 
+    return promotions.length 
     ? 
     promotions.map(promotion => (
         <div key={promotion.id}>
@@ -11,9 +11,10 @@ export default ({ promotions, deletePromotion }) => {
             <div>
                 <button onClick={() => deletePromotion(promotion.id)}>Delete</button>
                 <Link to={`/home/admin/promotions/edit/${promotion.id}`}>Edit</Link>
+                <Link to={`/home/admin/promotions/students/${promotion.id}`}>Students</Link>
             </div>
         </div>
     ))
     :
-    "loading..."
+    "No promotions yet..."
 }

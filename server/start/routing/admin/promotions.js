@@ -8,7 +8,7 @@ Route.group(()=> {
 
     Route.post('/add', 'PromotionsController.addPromotion')
 
-    Route.get('/users/:promotion', 'PromotionsController.getUsers').bind('Promotion')
+    Route.get('/students/:promotion', 'PromotionsController.getUsers').bind('Promotion')
     
     Route.get('/retrieve/:promotion', 'PromotionsController.promotion').bind('Promotion')
   
@@ -16,5 +16,4 @@ Route.group(()=> {
 
     Route.delete('/delete/:promotion', 'PromotionsController.deletePromotion').bind('Promotion')
 
-    
 }).prefix('api/promotions').middleware(['auth', 'admin']).namespace('admin')

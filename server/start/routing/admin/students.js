@@ -8,8 +8,8 @@ Route.group(()=> {
     
     Route.post('/register', 'ManageUsersController.addStudent').validator('Register')
     
-    Route.get('/retrieve/:user', 'ManageUsersController.editUser').bind('User')
-    
     Route.delete('/delete/:user', 'ManageUsersController.deleteUser').bind('User')
+    
+    Route.get('/retrieve/:user', 'ManageUsersController.editUser').bind('user')
       
 }).prefix('api/admin/users').middleware(['auth', 'admin']).namespace('admin') 

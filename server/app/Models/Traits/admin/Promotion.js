@@ -7,9 +7,9 @@ class Promotion {
       
       if (!promotion) return response.status(404).send({error: 'Promotion not found'})
 
-      const users = await promotion.users().fetch()
+      const students = await promotion.users().fetch()
 
-      return response.status(200).json({users})
+      return response.status(200).json({students})
     }
 
     Model.promotions = async ({response}) => {

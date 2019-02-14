@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import { BrowserRouter, Route } from "react-router-dom"
+import { HashRouter, Route } from "react-router-dom"
 
 import App from "components/App"
 import Signin from "components/Auth/Signin"
@@ -10,12 +10,12 @@ import 'assets/sass/style.sass'
 
 
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <App>
       <Route path="/" component={Signin} exact/>
       <Route path="/signin" component={Signin} />
       <Route path="/home" component={Home} />
     </App>
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById("root")
 )
