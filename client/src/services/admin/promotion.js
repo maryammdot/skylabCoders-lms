@@ -5,7 +5,7 @@ export default {
 
   async getAll() {
     try {
-        const {data: {promotions}} = await axios().get('promotions/all')
+        const {data: {promotions}} = await axios().get('admin/promotions/all')
         return promotions
     } catch (error) {
         throw Error(validate.http(error))
@@ -14,7 +14,7 @@ export default {
 
   async retrieve({promotionId}) {
     try {
-        const {data: {promotion}} = await axios().get(`promotions/retrieve/${promotionId}`)
+        const {data: {promotion}} = await axios().get(`admin/promotions/retrieve/${promotionId}`)
         return promotion
     } catch (error) {
         throw Error(validate.http(error))
@@ -23,7 +23,7 @@ export default {
 
   async getStudents({promotionId}) {
     try {
-        const {data: {students}} = await axios().get(`promotions/students/${promotionId}`)
+        const {data: {students}} = await axios().get(`admin/promotions/students/${promotionId}`)
         return students
     } catch (error) {
         throw Error(validate.http(error))
@@ -32,7 +32,7 @@ export default {
 
   async add(postData) {
     try {
-        const {data: {message}} = await axios().post("promotions/add", postData)
+        const {data: {message}} = await axios().post("admin/promotions/add", postData)
         return message
     } catch (error) {
         throw Error(validate.http(error))
@@ -41,7 +41,7 @@ export default {
 
   async delete({promotionId}) {
     try {
-        const {data: {message}} = await axios().delete(`promotions/delete/${promotionId}`)
+        const {data: {message}} = await axios().delete(`admin/promotions/delete/${promotionId}`)
         return message
     } catch (error) {
         throw Error(validate.http(error))
@@ -50,7 +50,7 @@ export default {
 
   async edit(postData) {
     try {
-        const {data} = await axios().patch(`promotions/edit/${postData.promotionId}`, postData)
+        const {data} = await axios().patch(`admin/promotions/edit/${postData.promotionId}`, postData)
         return data
     } catch (error) {
         throw Error(validate.http(error))

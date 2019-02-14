@@ -45,10 +45,10 @@ class User extends Model {
   }
 
   static get computed() {
-    return ['priviliges']
+    return ['privileges']
   }
 
-  getPriviliges({role}) {
+  getPrivileges({role}) {
     return role ? 'Admin' : 'Student'
   }
 

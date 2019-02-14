@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Promotions from 'services/admin/promotions'
+import Promotion from 'services/admin/promotion'
 import PromotionCard from 'components/Admin/Promotions/AllPromotions/PromotionCard'
 
 class AllPromotions extends Component {
@@ -12,7 +12,7 @@ class AllPromotions extends Component {
 
     getPromotions = async () => {
         try {
-            const promotions = await Promotions.getAll()
+            const promotions = await Promotion.getAll()
             this.setState({ promotions })
         } catch ({message}) {
             this.setState({error: message})
@@ -21,7 +21,7 @@ class AllPromotions extends Component {
 
     deletePromotion = async promotionId => {
         try {
-            const message = await Promotions.delete({promotionId})
+            const message = await Promotion.delete({promotionId})
             const promotions = this.state.promotions.filter(propmotion => propmotion.id !== promotionId)
             this.setState({ message, promotions })
         } catch ({message}) {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route } from "react-router-dom"
 
-import ManageUsers from "components/Admin/ManageUsers"
+import ManageUsers from "components/Admin/Users/ManageUsers"
 import ManagePromotions from "components/Admin/Promotions/ManagePromotions"
 
 class Dashboard extends Component {

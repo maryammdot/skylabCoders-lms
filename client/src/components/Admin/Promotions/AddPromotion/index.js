@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Promotions from 'services/admin/promotions'
+import Promotion from 'services/admin/promotion'
 
 class AddPromotion extends Component {
 
@@ -9,7 +9,7 @@ class AddPromotion extends Component {
 
     addPromotion = async postData => {
         try {
-            const message = await Promotions.add(postData)
+            const message = await Promotion.add(postData)
             this.setState({message})
         } catch ({message}) {
             this.setState({error: message})

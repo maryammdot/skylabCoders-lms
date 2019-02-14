@@ -23,7 +23,7 @@ require('./routing/auth/auth')
 
 // Administration ----------------------------------------
 
-require('./routing/admin/students')
+require('./routing/admin/users')
 
 require('./routing/admin/promotions')
 

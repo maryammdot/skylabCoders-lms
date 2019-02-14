@@ -16,4 +16,4 @@ Route.group(()=> {
 
     Route.delete('/delete/:promotion', 'PromotionsController.deletePromotion').bind('Promotion')
 
-}).prefix('api/promotions').middleware(['auth', 'admin']).namespace('admin')
+}).prefix('api/admin/promotions').middleware(['auth', 'admin']).namespace('admin')

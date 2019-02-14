@@ -9,6 +9,7 @@ class Menu extends Component {
                 <ul>
                     <li><Link to="/home/admin/users">Users</Link></li>
                     <li><Link to="/home/admin/promotions">Promotions</Link></li>
+
                 </ul>
             </nav>
         </section>

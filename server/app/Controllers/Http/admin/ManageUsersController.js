@@ -16,9 +16,15 @@ class ManageUsersController {
 
     }
 
-    async addStudent() {
+    async addUser() {
 
-        await User.addStudent(...arguments)
+        await User.addUser(...arguments)
+
+    }
+
+    async allUsers() {
+
+        await User.allUsers(...arguments)
 
     }
 

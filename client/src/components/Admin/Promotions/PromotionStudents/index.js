@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Promotions from 'services/admin/promotions'
+import Promotion from 'services/admin/promotion'
 import StudentsCard from 'components/Admin/Promotions/PromotionStudents/StudentsCard'
 
 class PromotionStudents extends Component {
@@ -15,7 +15,7 @@ class PromotionStudents extends Component {
     getPromotionStudents = async () => {
         const {promotionId} = this
         try {
-            const students = await Promotions.getStudents({promotionId})
+            const students = await Promotion.getStudents({promotionId})
             this.setState({ students })
         } catch ({message}) {
             this.setState({error: message})
