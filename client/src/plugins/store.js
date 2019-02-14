@@ -35,6 +35,10 @@ class Store {
   refreshToken() {
     this.TOKEN = this.getToken()   
   }
+
+  isAdmin() {
+    return !!this.USER.role
+  }
   
 }
 

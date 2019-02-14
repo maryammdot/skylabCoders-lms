@@ -37,6 +37,6 @@ export default {
     } catch (error) {
         throw Error(validate.http(error))
     }
-  },
+  }
 
 }

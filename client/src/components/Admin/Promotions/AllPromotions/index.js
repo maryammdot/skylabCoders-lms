@@ -22,7 +22,7 @@ class AllPromotions extends Component {
     deletePromotion = async promotionId => {
         try {
             const message = await Promotion.delete({promotionId})
-            const promotions = this.state.promotions.filter(propmotion => propmotion.id !== promotionId)
+            const promotions = this.state.promotions.filter(promotion => promotion.id !== promotionId)
             this.setState({ message, promotions })
         } catch ({message}) {
             this.setState({error: message})

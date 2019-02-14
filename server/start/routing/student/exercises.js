@@ -14,4 +14,4 @@ Route.group(()=> {
   
     Route.delete('/delete/:exercise', 'ExercisesController.remove').bind('Exercise').middleware(['exerciseOwner'])
     
-}).prefix('api/students/exercises').middleware(['auth']).namespace('student') 
+}).prefix('api/students/exercises').middleware(['auth']).namespace('student')

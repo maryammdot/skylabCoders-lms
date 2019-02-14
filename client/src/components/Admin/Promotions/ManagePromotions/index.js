@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link, Route } from "react-router-dom"
 
+import isAdmin from "components/middlewares/isAdmin"
 import AllPromotions from "components/Admin/Promotions/AllPromotions"
 import AddPromotion from "components/Admin/Promotions/AddPromotion"
 import EditPromotion from "components/Admin/Promotions/EditPromotion"
@@ -29,4 +30,4 @@ class ManagePromotions extends Component {
 
 }
 
-export default ManagePromotions
+export default isAdmin(ManagePromotions)

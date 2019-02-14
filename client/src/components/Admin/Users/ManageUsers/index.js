@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Link, Route } from "react-router-dom"
 
+import isAdmin from "components/middlewares/isAdmin"
 import AddUser from "components/Admin/Users/AddUser"
 import AllUsers from "components/Admin/Users/AllUsers"
-
 
 class ManageUsers extends Component {
 
@@ -28,4 +28,4 @@ class ManageUsers extends Component {
 
 }
 
-export default ManageUsers
+export default isAdmin(ManageUsers)

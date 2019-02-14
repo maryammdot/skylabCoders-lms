@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+
+import isAdmin from "components/middlewares/isAdmin"
 import Promotion from 'services/admin/promotion'
 import StudentsCard from 'components/Admin/Promotions/PromotionStudents/StudentsCard'
 
@@ -36,4 +38,4 @@ class PromotionStudents extends Component {
 
 }
 
-export default PromotionStudents
+export default isAdmin(PromotionStudents)

@@ -7,7 +7,7 @@ class StudentInfo {
      
       const user = await auth.getUser()
 
-      const exercises = await user.exercises().select(['title', 'id', 'status', 'mark']).fetch()
+      const exercises = await user.exercises().select(['title', 'id', 'status', 'mark', 'theme']).fetch()
 
       return response.status(200).json({exercises})
     }
