@@ -43,6 +43,9 @@ class UserSeeder {
       role: 1,
     })
 
+    let temas = ['Arrays', 'Objects', 'Functions', 'ES6', 'HTML CSS - JS', 'Passapalabra']
+
+    for (let i = 0; i <= 7; i++) await Factory.model('App/Models/Tema').create({name: temas[i], number: i})
 
     await Factory.model('App/Models/User').createMany(20, {promotion_id: firstPromotion.id})
 

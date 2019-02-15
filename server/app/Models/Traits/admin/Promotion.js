@@ -28,7 +28,6 @@ class Promotion {
 
     }
 
-
     Model.editPromotion = async ({promotion, response, request}) => {
 
       if (!promotion) return response.status(404).send({error: 'Promotion not found'})

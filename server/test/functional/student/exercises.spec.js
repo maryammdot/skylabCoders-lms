@@ -1,6 +1,6 @@
 "use strict"
 
-const { test, trait } = use("Test/Suite")("Exercises")
+const { test, trait, beforeEach } = use("Test/Suite")("Exercises")
 
 const Group = use("App/Models/Promotion")
 
@@ -10,13 +10,34 @@ trait("Test/ApiClient")
 
 trait("Auth/Client")
 
+/*
+  BeforeEach -----------------------------------------------------------------------
+*/
+
+let student, tema, promotion
+
+beforeEach(async () => {
+
+  tema = await Factory.model("App/Models/Tema").create()
+
+  promotion = await Factory.model("App/Models/Promotion").create()
+
+  student = await Factory.model("App/Models/User").create({
+    promotion_id: promotion.id
+  })
+
+})
+
+/*
+  Success Cases -----------------------------------------------------------------------
+*/
+
 test("Student can add a exercise", async ({ client }) => {
-  const student = await Factory.model("App/Models/User").create()
 
   const postData = {
     title: "Connect four game",
-    theme: "Tema 8",
     code: "console.log(!!{is: true})",
+    tema_id: tema.id,
     user_id: student.id
   }
 
@@ -35,9 +56,9 @@ test("Student can add a exercise", async ({ client }) => {
 })
 
 test("Student can retrieve his exercise", async ({ client }) => {
-  const student = await Factory.model("App/Models/User").create()
 
   const exercise = await Factory.model("App/Models/Exercise").create({
+    tema_id: tema.id,
     user_id: student.id
   })
 
@@ -51,9 +72,10 @@ test("Student can retrieve his exercise", async ({ client }) => {
   res.assertJSONSubset({
     exercise: {
       title: exercise.title,
-      theme: exercise.theme,
       code: exercise.code,
       mark: 0,
+      tema_id: tema.id,
+      user_id: student.id,
       state: "Pending"
     }
   })

@@ -17,9 +17,9 @@ beforeEach(async () => {
 
   admin = await Factory.model("App/Models/User").create({ role: 1 })
 
-  promotion = await Factory.model("App/Models/Promotion").create()
-
   user = await Factory.model("App/Models/User").create()
+
+  promotion = await Factory.model("App/Models/Promotion").create()
 
   student = await Factory.model("App/Models/User").create({
     promotion_id: promotion.id
@@ -84,11 +84,11 @@ test("Admin can register student and assign it to a promotion", async ({
   res.assertStatus(200)
 
   res.assertJSONSubset({
-    student: {
+    user: {
       email: postData.email,
       username: postData.username,
       promotion_id: promotion.id,
-      priviliges: 'Student'
+      privileges: 'Student'
     },
     message: "Student successfully created"
   })

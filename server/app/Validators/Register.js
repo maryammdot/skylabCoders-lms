@@ -4,7 +4,7 @@ class Register {
   get rules () {
     return {
       email: 'required|email|unique:users,email',
-      username: 'required|string|max:20|min:3|string|unique:users,username',
+      username: 'required|string|max:20|min:3|unique:users,username',
       promotion_id: 'required|number',
       password: 'required|string|min:6|confirmed'
     }

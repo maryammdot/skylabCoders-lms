@@ -33,6 +33,10 @@ class Exercise extends Model {
     user() {
         this.belongsTo('App/Models/User')
     }
+
+    tema() {
+      this.belongsTo('App/Models/Tema')
+  }
 }
 
 module.exports = Exercise

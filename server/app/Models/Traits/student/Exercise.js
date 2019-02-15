@@ -7,9 +7,9 @@ class Exercise {
       
       const user = await auth.getUser()
 
-      const {title, theme, code} = request.all()
+      const {title, code, tema_id} = request.all()
 
-      const exercise = await Model.create({title, theme, code, user_id: user.id })
+      const exercise = await Model.create({title, code, tema_id, user_id: user.id })
 
       return response.status(200).json({exercise, message: 'Exercise successfully sent'})
     }
@@ -23,7 +23,7 @@ class Exercise {
 
     Model.update = async ({exercise, request, response}) => {
 
-      const params = request.only(['title', 'theme', 'code'])
+      const params = request.only(['title', 'code', 'tema_id'])
 
       if (!Object.keys(params).length) return response.status(404).send({error: 'Exercise has not been modified'})
 

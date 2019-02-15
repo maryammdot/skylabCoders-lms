@@ -15,30 +15,37 @@
 
 const Factory = use('Factory')
 
-Factory.blueprint('App/Models/User', (faker, i, data) => {
+Factory.blueprint('App/Models/User', (faker, i, custom) => {
   return {
-    username: data.username ? data.username : faker.username(),
-    email: data.email ? data.email : faker.email(),
+    username: custom.username || faker.username(),
+    email: custom.email || faker.email(),
     password: 'secret',
-    role: data.role ? data.role : 0,
-    promotion_id: data.promotion_id ? data.promotion_id : null,
+    role: custom.role || 0,
+    promotion_id: custom.promotion_id || null,
   }
 })
 
-Factory.blueprint('App/Models/Promotion', (faker, i, data) => {
+Factory.blueprint('App/Models/Promotion', (faker, i, custom) => {
   return {
-    name: data.name ? data.name : faker.name(),
-    season: data.season ? data.season : faker.date({string: true})
+    name: custom.name || faker.name(),
+    season: custom.season || faker.date({string: true})
   }
 })
 
-Factory.blueprint('App/Models/Exercise', async (faker, i, data) => {
+Factory.blueprint('App/Models/Exercise', async (faker, i, custom) => {
   return {
-    title: data.title ? data.title : faker.sentence({ words: 4 }),
-    theme: data.theme ? data.theme : faker.integer({ min: 0, max: 8 }),
+    title: custom.title || faker.sentence({ words: 4 }),
     code: `<p>${faker.sentence({ words: 10 })}</p>`,
-    status: data.status ? data.status : 0,
-    user_id: data.user_id ? data.user_id : null
+    status: custom.status || 0,
+    tema_id: custom.tema_id || null,
+    user_id: custom.user_id ||  null
+  }
+})
+
+Factory.blueprint('App/Models/Tema', (faker, i, custom) => {
+  return {
+    name: custom.name || faker.name(),
+    number: custom.number || faker.integer({ min: 1, max: 7 }),
   }
 })
 

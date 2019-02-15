@@ -19,7 +19,7 @@ test("Admin can create a promotion", async ({ client }) => {
   }
 
   const res = await client
-    .post("api/promotions/add")
+    .post("api/admin/promotions/add")
     .send(postData)
     .loginVia(admin)
     .end()
@@ -40,7 +40,7 @@ test("Admin can edit a promotion", async ({ client }) => {
   const postData = { name: "Tercera promoción" }
 
   const res = await client
-    .patch(`api/promotions/edit/${promotion.id}`)
+    .patch(`api/admin/promotions/edit/${promotion.id}`)
     .send(postData)
     .loginVia(admin)
     .end()
@@ -58,7 +58,7 @@ test("Admin can retrieve a promotion", async ({ client }) => {
   const promotion = await Factory.model("App/Models/Promotion").create()
 
   const res = await client
-    .get(`api/promotions/retrieve/${promotion.id}`)
+    .get(`api/admin/promotions/retrieve/${promotion.id}`)
     .loginVia(admin)
     .end()
 
@@ -73,7 +73,7 @@ test("Admin can delete a promotion", async ({ client }) => {
   const promotion = await Factory.model("App/Models/Promotion").create()
 
   const res = await client
-    .delete(`api/promotions/delete/${promotion.id}`)
+    .delete(`api/admin/promotions/delete/${promotion.id}`)
     .loginVia(admin)
     .end()
 
@@ -99,7 +99,7 @@ test("Admin can get users by promotion", async ({ client }) => {
   })
 
   const res = await client
-    .get(`api/promotions/students/${promotion.id}`)
+    .get(`api/admin/promotions/students/${promotion.id}`)
     .loginVia(admin)
     .end()
 
@@ -112,7 +112,7 @@ test("Admin can get users by promotion", async ({ client }) => {
         username: student_1.username,
         email: student_1.email,
         role: 0,
-        priviliges: "Student",
+        privileges: "Student",
         promotion_id: promotion.id
       },
       {
@@ -120,7 +120,7 @@ test("Admin can get users by promotion", async ({ client }) => {
         username: student_2.username,
         email: student_2.email,
         role: 0,
-        priviliges: "Student",
+        privileges: "Student",
         promotion_id: promotion.id
       },
       {
@@ -128,7 +128,7 @@ test("Admin can get users by promotion", async ({ client }) => {
         username: student_3.username,
         email: student_3.email,
         role: 0,
-        priviliges: "Student",
+        privileges: "Student",
         promotion_id: promotion.id
       }
     ]
