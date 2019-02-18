@@ -3,6 +3,7 @@ import { Link, Route } from "react-router-dom"
 
 import AddExercise from "components/Student/Exercises/AddExercise"
 import AllExercises from "components/Student/Exercises/AllExercises"
+import EditExercise from "components/Student/Exercises/EditExercise"
 
 class ManageExercises extends Component {
 
@@ -20,6 +21,8 @@ class ManageExercises extends Component {
 
             <Route path="/home/student/exercises/all" component={AllExercises}/>
             <Route path="/home/student/exercises/add" component={AddExercise}/>
+            <Route path="/home/student/exercises/edit/:exerciseId" component={EditExercise}/>
+
 
         </section>
     }

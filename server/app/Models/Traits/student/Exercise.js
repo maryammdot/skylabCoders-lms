@@ -1,5 +1,7 @@
 'use strict'
 
+const Tema = use('App/Models/Tema')
+
 class Exercise {
   register (Model) {
   
@@ -41,6 +43,14 @@ class Exercise {
       await exercise.delete()
 
       return response.status(200).json({message: 'Exercise successfully deleted'})
+    },
+
+    Model.temas = async ({response}) => {
+
+      const temas = await Tema.all()
+
+      return response.status(200).json({temas})
+
     }
   }
 }

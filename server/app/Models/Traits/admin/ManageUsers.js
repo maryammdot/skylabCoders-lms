@@ -12,7 +12,7 @@ class ManageUsers {
       !user.role && (user.promotion = await user.promotion().fetch())
       
       return response.status(200).json({user, message: 'User role successfully modified'})
-
+      
     }
 
     Model.addUser = async ({request, response}) => {
@@ -28,7 +28,7 @@ class ManageUsers {
     Model.deleteUser = async ({user, response}) => {
 
       if (!user) return response.status(404).send({error: 'user not found'})
-
+  
       await user.delete()
       
       return response.status(200).json({message: 'User successfully deleted'})

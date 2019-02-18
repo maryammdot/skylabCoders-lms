@@ -5,6 +5,8 @@ const Route = use('Route')
 Route.group(()=> {
   
     Route.post('/add', 'ExercisesController.add')
+    
+    Route.get('/temas', 'ExercisesController.temas')
 
     Route.get('/all', 'StudentsController.getExercises')
 

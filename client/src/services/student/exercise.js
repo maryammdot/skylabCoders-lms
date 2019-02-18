@@ -28,6 +28,33 @@ export default {
     } catch (error) {
         throw Error(validate.http(error))
     }
+  },
+
+  async getTemas() {
+    try {
+        const {data: {temas}} = await axios().get('students/exercises/temas')
+        return temas
+    } catch (error) {
+        throw Error(validate.http(error))
+    }
+  },
+
+  async retrieve({exerciseId}) {
+    try {
+        const {data: {exercise}} = await axios().get(`students/exercises/retrieve/${exerciseId}`)
+        return exercise
+    } catch (error) {
+        throw Error(validate.http(error))
+    }
+  },
+
+  async edit(postData) {
+    try {
+        const {data: {message}} = await axios().patch(`students/exercises/edit/${postData.exerciseId}`, postData)
+        return message
+    } catch (error) {
+        throw Error(validate.http(error))
+    }
   }
 
 }

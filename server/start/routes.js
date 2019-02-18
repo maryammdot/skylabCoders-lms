@@ -27,6 +27,8 @@ require('./routing/admin/users')
 
 require('./routing/admin/promotions')
 
+require('./routing/admin/temas')
+
 // Students ----------------------------------------------
 
 require('./routing/student/exercises')

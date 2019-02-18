@@ -1,7 +1,6 @@
 "use strict"
 
-const { test, trait, beforeEach, group } = use("Test/Suite")("Manage Users")
-const Group = use("App/Models/Promotion")
+const { test, trait, beforeEach } = use("Test/Suite")("Manage Users")
 const Factory = use("Factory")
 
 trait("Test/ApiClient")

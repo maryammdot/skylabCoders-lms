@@ -14,4 +14,4 @@ Route.group(()=> {
 
     Route.get('/', 'TemasController.temas')
 
-}).prefix('api/admin/temas').middleware(['auth', 'admin']).namespace('admin') 
+}).prefix('api/admin/temas').middleware(['auth', 'admin']).namespace('admin')

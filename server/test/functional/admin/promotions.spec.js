@@ -2,8 +2,6 @@
 
 const { test, trait } = use("Test/Suite")("Promotions")
 
-const Group = use("App/Models/Promotion")
-
 const Factory = use("Factory")
 
 trait("Test/ApiClient")
@@ -19,7 +17,7 @@ test("Admin can create a promotion", async ({ client }) => {
   }
 
   const res = await client
-    .post("api/admin/promotions/add")
+    .post("api/admin/promotions/add") 
     .send(postData)
     .loginVia(admin)
     .end()

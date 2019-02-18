@@ -18,6 +18,10 @@ class ExerciseCrudController {
     async remove() {
         await Exercise.remove(...arguments)
     }
+
+    async temas() {
+        await Exercise.temas(...arguments)
+    }
 }
 
 module.exports = ExerciseCrudController
