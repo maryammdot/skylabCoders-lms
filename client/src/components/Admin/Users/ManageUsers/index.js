@@ -15,7 +15,6 @@ class ManageUsers extends Component {
             <ul>
                 <li><Link to="/home/admin/users/add">Add User</Link></li>
                 <li><Link to="/home/admin/users/all">All Users</Link></li>
-
             </ul>
 
             <hr/>

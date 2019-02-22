@@ -1,0 +1,23 @@
+.trello
+    background: white
+    width: 100%
+    height: 80vh
+    display: flex
+    justify-content: space-between
+    &__column
+        flex-basis: 100%
+        h2
+            text-transform: capitalize
+            text-align: center
+    &__exercise
+        margin: 10px
+        padding: 10px
+        cursor: pointer
+        &:hover
+            box-shadow: 0 0 4px 1px rgba(0, 0, 0, .1)
+        &--pending
+            background: #FFE9E9
+        &--review
+            background: #DAF1FF   
+        &--closed
+            background: #EAFFE9

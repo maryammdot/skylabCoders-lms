@@ -1,5 +1,7 @@
 'use strict'
 
+const Exercise = use('App/Models/Exercise')
+
 class ManageUsers {
   register (Model) {
   
@@ -8,6 +10,11 @@ class ManageUsers {
       if (user.role) user.role = 0; else user.role = 1
 
       await user.save()
+
+      if (!user.role) {
+        user.promotion = await user.promotion().fetch()
+        user.exercises = await this.getUserExercises(user.id)
+      }
 
       !user.role && (user.promotion = await user.promotion().fetch())
       
@@ -37,12 +44,22 @@ class ManageUsers {
 
     Model.allUsers = async ({response}) => {
 
-      const users = await Model.query().with('promotion').fetch()
+      const users = (await Model.query().with('promotion').fetch()).toJSON()
+
+      for (let user of users) user.exercises = user.role ? null : await this.getUserExercises(user.id)
       
       return response.status(200).json({users})
 
     }
-  
+
   }
+
+  async getUserExercises(user_id) {
+
+    return await Exercise.query().where({user_id}).select('id', 'title', 'status').fetch()
+    
+  } 
+
+
 }
 module.exports = ManageUsers

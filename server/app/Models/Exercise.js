@@ -9,6 +9,8 @@ class Exercise extends Model {
         super.boot()
     
         this.addTrait('student/Exercise')
+        this.addTrait('admin/Exercise')
+
     }
 
     static get hidden() {
@@ -21,21 +23,21 @@ class Exercise extends Model {
     
     getState({status}) {
         switch(status) {
-            case 0: 
-              return 'Pending'
-            case 1:
-              return 'In revision'
+            case 1: 
+              return 'pending'
             case 2:
-              return 'Closed'
+              return 'review'
+            case 3:
+              return 'closed'
         }
     }
 
     user() {
-        this.belongsTo('App/Models/User')
+      return this.belongsTo('App/Models/User')
     }
 
     tema() {
-      this.belongsTo('App/Models/Tema')
+      return this.belongsTo('App/Models/Tema')
   }
 }
 

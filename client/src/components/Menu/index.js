@@ -16,6 +16,7 @@ class Menu extends Component {
                 <li><Link to="/home/admin/users">Users</Link></li>
                 <li><Link to="/home/admin/promotions">Promotions</Link></li>
                 <li><Link to="/home/admin/temas">Temas</Link></li>
+                <li><Link to="/home/admin/exercises">Exericises</Link></li>
             </ul>
         )
     }

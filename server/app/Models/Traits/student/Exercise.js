@@ -11,7 +11,7 @@ class Exercise {
 
       const {title, code, tema_id} = request.all()
 
-      const exercise = await Model.create({title, code, tema_id, user_id: user.id })
+      const exercise = await Model.create({title, code, tema_id, code_admin_correction: code, user_id: user.id })
 
       return response.status(200).json({exercise, message: 'Exercise successfully sent'})
     }
@@ -28,6 +28,8 @@ class Exercise {
       const params = request.only(['title', 'code', 'tema_id'])
 
       if (!Object.keys(params).length) return response.status(404).send({error: 'Exercise has not been modified'})
+
+      exercise.code_admin_correction = params.code
 
       exercise.merge(params)
 
